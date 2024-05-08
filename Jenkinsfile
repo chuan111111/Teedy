@@ -11,6 +11,11 @@ pipeline {
                 sh 'mvn pmd:pmd'
             }
         }
+         stage('Doc') {
+            steps {
+                sh 'mvn javadoc:jar'
+            }
+        }
     }
     
     post {
@@ -18,6 +23,8 @@ pipeline {
             archiveArtifacts artifacts: '**/target/site/**', fingerprint: true
             archiveArtifacts artifacts: '**/target/**/*.jar', fingerprint: true
             archiveArtifacts artifacts: '**/target/**/*.war', fingerprint: true
+            archiveArtifacts artifacts: '**/target/**/pmd.html', fingerprint: true
+            archiveArtifacts artifacts: '**/target/surefire-reports', fingerprint: true
         }
     }
     
