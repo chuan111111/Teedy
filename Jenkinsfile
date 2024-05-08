@@ -18,7 +18,7 @@ pipeline {
         }
         stage('Test report') {
             steps {
-                sh 'mvn -Dtest=TestAclResource test --fail-never'
+                sh 'mvn test --fail-never'
             }
         }
     }
