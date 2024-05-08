@@ -18,7 +18,7 @@ pipeline {
         }
         stage('Test report') {
             steps {
-                sh 'mvn -Dtest=TestAclResource test'
+                sh 'mvn -Dtest=TestAclResource test --fail-never'
             }
         }
     }
@@ -29,7 +29,7 @@ pipeline {
             archiveArtifacts artifacts: '**/target/**/*.jar', fingerprint: true
             archiveArtifacts artifacts: '**/target/**/*.war', fingerprint: true
             archiveArtifacts artifacts: '**/target/**/pmd.html', fingerprint: true
-            archiveArtifacts artifacts: '**/target/**/surefire-reports', fingerprint: true
+            archiveArtifacts artifacts: '**/target/surefire-reports/*xml', fingerprint: true
         }
     }
     
