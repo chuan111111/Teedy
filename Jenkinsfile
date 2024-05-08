@@ -16,6 +16,11 @@ pipeline {
                 sh 'mvn javadoc:jar'
             }
         }
+        stage('Test report') {
+            steps {
+                sh 'mvn -Dtest=TestUser test'
+            }
+        }
     }
     
     post {
