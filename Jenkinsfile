@@ -18,7 +18,7 @@ pipeline {
         }
         stage('Test report') {
             steps {
-                sh 'mvn -Dtest=TestUser test'
+                sh 'mvn -Dtest=TestAclResource test'
             }
         }
     }
